@@ -11,8 +11,12 @@ const customJestConfig = {
     "^.+\\.(ts|tsx)$": "ts-jest",
   },
   moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
-  collectCoverageFrom: ["src/**/*.ts(x)?", "!src/**/*.d.ts"],
-  testPathIgnorePatterns: ["/node_modules/", "/build/"],
+  collectCoverageFrom: [
+    "src/**/*.{ts,tsx}",
+    "!src/**/*.d.ts",
+    "!src/pages/_app.tsx",
+  ],
+  testPathIgnorePatterns: ["/node_modules/", "/build/", "src/pages/_app.tsx"],
   collectCoverage: true,
   modulePaths: ["<rootDir>/src/"],
 };
