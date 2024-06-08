@@ -12,3 +12,31 @@ body {
 main {
   padding: 20px;
 }
+
+.card-container {
+  @apply relative overflow-hidden m-2 w-48 bg-white;
+}
+
+.card-image-wrapper {
+  @apply relative w-full h-48;
+}
+
+.card-content-wrapper {
+  @apply bg-black text-white p-2 flex justify-between items-center h-20 relative overflow-hidden border-t-8 border-red-500;
+}
+
+.card-background-effect {
+  @apply absolute inset-0 bg-red-500 transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-10;
+}
+
+.card-text {
+  @apply text-sm font-semibold truncate max-w-xs relative z-20;
+}
+
+.card-button {
+  @apply relative z-20;
+}
+
+.card-cut-corner {
+  @apply absolute bottom-0 right-0 w-6 h-6 bg-white transform rotate-45 translate-x-4 translate-y-4;
+}
