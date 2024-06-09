@@ -1,3 +1,4 @@
+import { Spinner } from "@components/Spinner";
 import { useCharacterController } from "./controller";
 import { useFavorites } from "@contexts/FavoritesContext";
 
@@ -5,7 +6,8 @@ const CharacterPage = () => {
   const { character, comics, loading } = useCharacterController();
   const { favorites, toggleFavorite } = useFavorites();
 
-  if (loading || !character || !comics) return <p>Loading...</p>;
+  if (loading || !character || !comics) return <Spinner />;
+
   const isFavorited = favorites.includes(character?.id);
 
   return (
@@ -47,7 +49,10 @@ const CharacterPage = () => {
             <h2 className="text-3xl font-bold mb-4">COMICS</h2>
             <div className="flex space-x-4">
               {comics.map((comic) => (
-                <div key={comic.resource_url} className="w-40 flex-shrink-0">
+                <div
+                  key={comic.resource_url + comic.name}
+                  className="w-40 flex-shrink-0"
+                >
                   <img
                     src={comic.resource_url}
                     alt={comic.name}

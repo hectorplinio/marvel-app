@@ -3,23 +3,28 @@ import Link from "next/link";
 import { useFavorites } from "@contexts/FavoritesContext";
 
 export const Header = () => {
-  const { favorites, toggleShowFavorites } = useFavorites();
+  const { favorites, showFavorites, toggleShowFavorites } = useFavorites();
 
   return (
-    <header className="bg-black h-20 p-6 flex justify-between items-center md:h-21 md:px-12">
-      <Link href="/" className="flex items-center">
-        <div className="relative h-8 w-24 md:h-8 md:w-32">
+    <header className="bg-black h-24 flex justify-between items-center md:h-21 md:px-12">
+      <Link
+        href="/"
+        className="flex items-center"
+        onClick={showFavorites ? toggleShowFavorites : () => {}}
+      >
+        <div className="relative md:h-8 md:w-32">
           <img
             src="/Marvel_logo.png"
             alt="Marvel Logo"
-            className="object-contain w-32 h-12"
+            className="object-contain -m-2"
           />
         </div>
       </Link>
       <nav>
         <ul className="flex space-x-4 items-center">
           <li className="flex items-center">
-            <button
+            <Link
+              href="/"
               className="flex items-center focus:outline-none"
               onClick={toggleShowFavorites}
             >
@@ -35,7 +40,7 @@ export const Header = () => {
                 />
               </div>
               <span className="text-white ml-2">{favorites.length}</span>
-            </button>
+            </Link>
           </li>
         </ul>
       </nav>

@@ -1,3 +1,4 @@
+import { useFavorites } from "@contexts/FavoritesContext";
 import { Character } from "@domain/characters";
 import { Comics } from "@domain/comics";
 import { useCharacters } from "@hooks/characters/useCharacters";
@@ -7,6 +8,7 @@ import { useEffect, useState } from "react";
 export const useCharacterController = () => {
   const router = useRouter();
   const { id } = router.query;
+  const { showFavorites, toggleShowFavorites } = useFavorites();
 
   const character_id = String(id);
 
@@ -24,7 +26,7 @@ export const useCharacterController = () => {
     if (!data || !comics) return;
 
     setLoading(false);
-
+    showFavorites ? toggleShowFavorites() : () => {};
     setCharacter(data);
     setComics(comics);
   };
