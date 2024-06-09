@@ -1,4 +1,5 @@
 import { useFavorites } from "@contexts/FavoritesContext";
+import Link from "next/link";
 import React from "react";
 
 type Character = {
@@ -19,11 +20,13 @@ export const Card = ({ character }: CardProps) => {
   return (
     <div className="card-container group">
       <div className="card-image-wrapper">
-        <img
-          src={avatar_url}
-          alt={name}
-          className="object-cover w-full h-full"
-        />
+        <Link href={`/character/${character.id}`}>
+          <img
+            src={avatar_url}
+            alt={name}
+            className="object-cover w-full h-full"
+          />
+        </Link>
       </div>
       <div className="card-content-wrapper">
         <div className="card-background-effect"></div>

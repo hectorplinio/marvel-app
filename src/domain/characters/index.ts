@@ -4,8 +4,4 @@ export interface Character {
   description: string;
   avatar_url: string;
   is_favorited: boolean;
-  comics: {
-    name: string;
-    resource_url: string;
-  }[];
 }

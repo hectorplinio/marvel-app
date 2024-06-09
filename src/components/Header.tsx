@@ -6,13 +6,13 @@ export const Header = () => {
   const { favorites, toggleShowFavorites } = useFavorites();
 
   return (
-    <header className="bg-black h-20 p-4 flex justify-between items-center md:h-21 md:px-12">
+    <header className="bg-black h-20 p-6 flex justify-between items-center md:h-21 md:px-12">
       <Link href="/" className="flex items-center">
         <div className="relative h-8 w-24 md:h-8 md:w-32">
           <img
             src="/Marvel_logo.png"
             alt="Marvel Logo"
-            className="object-contain w-full h-full"
+            className="object-contain w-32 h-12"
           />
         </div>
       </Link>
