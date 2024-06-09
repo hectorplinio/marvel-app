@@ -23,7 +23,8 @@
       "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"],
       "@pages/*": ["src/pages/*"],
-      "@contexts/*": ["src/contexts/*"]
+      "@contexts/*": ["src/contexts/*"],
+      "@controllers/*": ["src/controllers/*"]
     }
   },
   "include": [
