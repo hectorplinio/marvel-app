@@ -22,5 +22,11 @@
     "node": true,
     "jest": true
   },
-  "ignorePatterns": [".eslintrc.js", "dist/", "node_modules/"]
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/",
+    "out/",
+    "coverage/",
+    "**/__tests__/**"
+  ]
 }

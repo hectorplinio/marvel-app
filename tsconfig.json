@@ -26,6 +26,13 @@
       "@contexts/*": ["src/contexts/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "next.config.js"
+  ],
+  "exclude": ["node_modules", "dist", "out", "coverage", "**/__tests__/**"]
 }
