@@ -71,3 +71,14 @@ body {
   height: 268.8px;
   object-fit: cover;
 }
+
+.fixed-heart-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-icon {
+  width: 24px;
+  height: 24px;
+}

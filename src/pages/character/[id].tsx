@@ -24,7 +24,7 @@ const CharacterPage = () => {
                 <p className="mt-4 text-lg">{character.description}</p>
               </div>
               <button
-                className="focus:outline-none"
+                className="focus:outline-none fixed-heart-button w-28"
                 onClick={() => toggleFavorite(character.id)}
               >
                 <img
@@ -34,9 +34,7 @@ const CharacterPage = () => {
                       : "/unselected_heart.png"
                   }
                   alt="Favorite"
-                  width={90}
-                  height={90}
-                  className="ml-4 pt-2"
+                  className="heart-icon"
                 />
               </button>
             </div>
@@ -45,15 +43,15 @@ const CharacterPage = () => {
       </div>
       <div className="mt-8 px-6">
         <div className="flex justify-center">
-          <div className="flex flex-col space-y-4 pb-4 max-w-4xl">
+          <div className="flex flex-col space-y-4 overflow-x-auto pb-4 custom-scrollbar max-w-4xl">
             <h2 className="text-3xl font-bold mb-4">COMICS</h2>
-            <div className="flex space-x-4 overflow-x-auto custom-scrollbar">
+            <div className="flex space-x-4">
               {comics.map((comic) => (
                 <div key={comic.resource_url} className="w-40 flex-shrink-0">
                   <img
                     src={comic.resource_url}
                     alt={comic.name}
-                    className="comic-image"
+                    className="comic-image border-b-2 border-red-500"
                   />
                   <p className="mt-2 text-sm text-center">{comic.name}</p>
                   <p className="text-xs text-center text-gray-500">
