@@ -1,8 +1,9 @@
 import React from "react";
 import Link from "next/link";
+import { useFavorites } from "@contexts/FavoritesContext";
 
 export const Header = () => {
-  const favoriteCount = 0;
+  const { favorites, toggleShowFavorites } = useFavorites();
 
   return (
     <header className="bg-black h-20 p-4 flex justify-between items-center md:h-21 md:px-12">
@@ -18,18 +19,23 @@ export const Header = () => {
       <nav>
         <ul className="flex space-x-4 items-center">
           <li className="flex items-center">
-            <div className="relative h-8 w-8">
-              <img
-                src={
-                  favoriteCount > 0
-                    ? "/selected_heart.png"
-                    : "/unselected_heart.png"
-                }
-                alt="Heart Icon"
-                className="object-contain w-full h-full"
-              />
-            </div>
-            <span className="text-white ml-2">{favoriteCount}</span>
+            <button
+              className="flex items-center focus:outline-none"
+              onClick={toggleShowFavorites}
+            >
+              <div className="relative h-8 w-8">
+                <img
+                  src={
+                    favorites.length > 0
+                      ? "/selected_heart.png"
+                      : "/unselected_heart.png"
+                  }
+                  alt="Heart Icon"
+                  className="object-contain w-full h-full"
+                />
+              </div>
+              <span className="text-white ml-2">{favorites.length}</span>
+            </button>
           </li>
         </ul>
       </nav>

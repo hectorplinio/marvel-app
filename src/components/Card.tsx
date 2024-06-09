@@ -1,19 +1,20 @@
+import { useFavorites } from "@contexts/FavoritesContext";
 import React from "react";
 
 type Character = {
   id: string;
   name: string;
   avatar_url: string;
-  is_favorited: boolean;
 };
 
 type CardProps = {
   character: Character;
-  onFavoriteToggle: () => void;
 };
 
-export const Card = ({ character, onFavoriteToggle }: CardProps) => {
-  const { name, avatar_url, is_favorited } = character;
+export const Card = ({ character }: CardProps) => {
+  const { name, avatar_url } = character;
+  const { favorites, toggleFavorite } = useFavorites();
+  const isFavorited = favorites.includes(character.id);
 
   return (
     <div className="card-container group">
@@ -27,9 +28,12 @@ export const Card = ({ character, onFavoriteToggle }: CardProps) => {
       <div className="card-content-wrapper">
         <div className="card-background-effect"></div>
         <h3 className="card-text">{name}</h3>
-        <button className="card-button" onClick={onFavoriteToggle}>
+        <button
+          className="card-button"
+          onClick={() => toggleFavorite(character.id)}
+        >
           <img
-            src={is_favorited ? "/selected_heart.png" : "/unselected_heart.png"}
+            src={isFavorited ? "/selected_heart.png" : "/unselected_heart.png"}
             alt="Favorite"
             width={24}
             height={24}

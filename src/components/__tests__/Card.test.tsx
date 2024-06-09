@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Card } from "@components/Card";
+import { FavoritesProvider } from "@contexts/FavoritesContext";
 
 describe("Card component", () => {
   const mockCharacter = {
@@ -10,24 +11,21 @@ describe("Card component", () => {
     avatar_url: "http://example.com/spiderman.jpg",
     is_favorited: false,
   };
-  const mockOnFavoriteToggle = jest.fn();
 
   it("renders the character name", () => {
     render(
-      <Card
-        character={mockCharacter}
-        onFavoriteToggle={mockOnFavoriteToggle}
-      />,
+      <FavoritesProvider>
+        <Card character={mockCharacter} />
+      </FavoritesProvider>,
     );
     expect(screen.getByText("Spider-Man")).toBeInTheDocument();
   });
 
   it("renders the character image", () => {
     render(
-      <Card
-        character={mockCharacter}
-        onFavoriteToggle={mockOnFavoriteToggle}
-      />,
+      <FavoritesProvider>
+        <Card character={mockCharacter} />
+      </FavoritesProvider>,
     );
     const imgElement = screen.getByAltText("Spider-Man");
     expect(imgElement).toBeInTheDocument();
@@ -35,24 +33,33 @@ describe("Card component", () => {
 
   it("renders the favorite button", () => {
     render(
-      <Card
-        character={mockCharacter}
-        onFavoriteToggle={mockOnFavoriteToggle}
-      />,
+      <FavoritesProvider>
+        <Card character={mockCharacter} />
+      </FavoritesProvider>,
     );
     const favoriteButton = screen.getByRole("button");
     expect(favoriteButton).toBeInTheDocument();
   });
 
-  it("calls onFavoriteToggle when the favorite button is clicked", () => {
+  it("toggles the favorite status when the favorite button is clicked", () => {
     render(
-      <Card
-        character={mockCharacter}
-        onFavoriteToggle={mockOnFavoriteToggle}
-      />,
+      <FavoritesProvider>
+        <Card character={mockCharacter} />
+      </FavoritesProvider>,
     );
     const favoriteButton = screen.getByRole("button");
     fireEvent.click(favoriteButton);
-    expect(mockOnFavoriteToggle).toHaveBeenCalled();
+
+    expect(screen.getByAltText("Favorite")).toHaveAttribute(
+      "src",
+      "/selected_heart.png",
+    );
+
+    fireEvent.click(favoriteButton);
+
+    expect(screen.getByAltText("Favorite")).toHaveAttribute(
+      "src",
+      "/unselected_heart.png",
+    );
   });
 });

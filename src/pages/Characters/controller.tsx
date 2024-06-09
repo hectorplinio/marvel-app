@@ -1,9 +1,10 @@
+import { useFavorites } from "@contexts/FavoritesContext";
 import { Character } from "@domain/characters";
 import { useCharacters } from "@hooks/characters/useCharacters";
 import { useEffect, useState } from "react";
 
 export interface FilterGetCharacters {
-  name?: string;
+  nameStartsWith?: string;
   limit: string;
 }
 
@@ -11,9 +12,10 @@ export const useCharactersController = () => {
   const [loading, setLoading] = useState(false);
   const { getCharacters } = useCharacters();
   const [characters, setCharacters] = useState<Array<Character> | null>(null);
+  const { favorites, showFavorites } = useFavorites();
 
   const [filter, setFilter] = useState<FilterGetCharacters>({
-    name: undefined,
+    nameStartsWith: undefined,
     limit: "50",
   });
 
@@ -22,7 +24,9 @@ export const useCharactersController = () => {
 
     const { data } = await getCharacters({
       filter: {
-        name: filter.name ? filter.name : undefined,
+        nameStartsWith: filter.nameStartsWith
+          ? filter.nameStartsWith
+          : undefined,
         limit: filter.limit,
       },
     });
@@ -30,15 +34,20 @@ export const useCharactersController = () => {
     if (!data) return;
 
     setLoading(false);
-    setCharacters(data);
+
+    showFavorites
+      ? setCharacters(
+          data.filter((character) => favorites.includes(character.id)),
+        )
+      : setCharacters(data);
   };
 
   useEffect(() => {
     fetchCharacters();
-  }, [filter.name]);
+  }, [filter.nameStartsWith, favorites, showFavorites]);
 
   const onChangeSearch = (value: string) => {
-    setFilter({ ...filter, name: value });
+    setFilter({ ...filter, nameStartsWith: value });
   };
 
   return {
