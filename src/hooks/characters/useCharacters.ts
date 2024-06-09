@@ -66,7 +66,6 @@ export const useCharacters = () => {
 
   const getComics = async (id: string): Promise<{ data: Comics[] | null }> => {
     const data = await getComicsByCharacterId(id);
-    console.log(data);
     if (!data.result || !data.result.data) {
       return { data: null };
     }
