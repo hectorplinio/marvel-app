@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { Character } from "@domain/characters";
 import { useCharacters } from "@hooks/characters/useCharacters";
 import { useEffect, useState } from "react";

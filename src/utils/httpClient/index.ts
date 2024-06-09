@@ -1,5 +1,4 @@
-import { v4 as uuid } from "uuid";
-import CryptoJS from "crypto-js";
+import crypto from "crypto";
 
 export const API_URL = "http://gateway.marvel.com/v1/public/";
 
@@ -20,8 +19,7 @@ const privateKey = process.env.MARVEL_PRIVATE_KEY!;
 
 const generateHash = (ts: string, privateKey: string, publicKey: string) => {
   const rawString = ts + privateKey + publicKey;
-  const md5 = CryptoJS.MD5(rawString);
-  return md5.toString();
+  return crypto.createHash("md5").update(rawString).digest("hex");
 };
 
 const generateRequestHeaders = async (
@@ -34,7 +32,6 @@ const generateRequestHeaders = async (
     credentials: "include",
     headers: {
       "Content-type": "application/json",
-      ["X-Request-Id"]: uuid(),
       ...requestInit?.headers,
     },
   };

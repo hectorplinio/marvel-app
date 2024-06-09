@@ -1,36 +1,34 @@
 import React from "react";
-import Image from "next/image";
 
-type CardProps = {
+type Character = {
   id: string;
   name: string;
   avatar_url: string;
   is_favorited: boolean;
+};
+
+type CardProps = {
+  character: Character;
   onFavoriteToggle: () => void;
 };
 
-export const Card = ({
-  name,
-  avatar_url,
-  is_favorited,
-  onFavoriteToggle,
-}: CardProps) => {
+export const Card = ({ character, onFavoriteToggle }: CardProps) => {
+  const { name, avatar_url, is_favorited } = character;
+
   return (
     <div className="card-container group">
       <div className="card-image-wrapper">
-        <Image
+        <img
           src={avatar_url}
           alt={name}
-          layout="fill"
-          objectFit="cover"
-          className="object-cover"
+          className="object-cover w-full h-full"
         />
       </div>
       <div className="card-content-wrapper">
         <div className="card-background-effect"></div>
         <h3 className="card-text">{name}</h3>
         <button className="card-button" onClick={onFavoriteToggle}>
-          <Image
+          <img
             src={is_favorited ? "/selected_heart.png" : "/unselected_heart.png"}
             alt="Favorite"
             width={24}
