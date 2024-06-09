@@ -13,10 +13,7 @@ export const CharactersPage = () => {
         {characters?.map((character) => (
           <Card
             key={character.id}
-            id={character.id}
-            name={character.name}
-            avatar_url={character.avatar_url}
-            is_favorited={character.is_favorited}
+            character={character}
             onFavoriteToggle={() => console.log(character.id)}
           />
         ))}
