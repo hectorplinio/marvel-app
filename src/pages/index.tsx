@@ -1,5 +1,5 @@
 import React from "react";
-import { CharactersPage } from "./Characters";
+import CharactersPage from "./characters";
 
 const Home = () => {
   return (
