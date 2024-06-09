@@ -8,6 +8,7 @@ const nextConfig = {
   images: {
     domains: ["i.annihil.us"],
   },
+  pageExtensions: ["ts", "tsx", "js", "jsx"],
 };
 
 module.exports = nextConfig;
