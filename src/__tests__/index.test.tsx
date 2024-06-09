@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { FavoritesProvider } from "@contexts/FavoritesContext";
+import { FavoritesProvider } from "../contexts/FavoritesContext";
 import Home from "../pages/index";
 
 describe("Home", () => {
@@ -9,7 +9,7 @@ describe("Home", () => {
     render(
       <FavoritesProvider>
         <Home />
-      </FavoritesProvider>,
+      </FavoritesProvider>
     );
   });
 });
