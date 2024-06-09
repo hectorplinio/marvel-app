@@ -9,7 +9,7 @@ describe("Home", () => {
     render(
       <FavoritesProvider>
         <Home />
-      </FavoritesProvider>
+      </FavoritesProvider>,
     );
   });
 });
