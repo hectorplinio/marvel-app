@@ -1,12 +1,8 @@
 import React from "react";
-import { CharactersPage } from "./Characters";
+import CharactersPage from "./Characters";
 
 const Home = () => {
-  return (
-    <div>
-      <CharactersPage />
-    </div>
-  );
+  return <CharactersPage />;
 };
 
 export default Home;

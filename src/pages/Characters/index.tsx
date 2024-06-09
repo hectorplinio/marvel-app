@@ -1,9 +1,9 @@
 import { Card } from "@components/Card";
-import { useCharactersController } from "./controller";
+import { useCharactersController } from "@controllers/useCharactersController";
 import { SearchBar } from "@components/SearchBar";
 import { Spinner } from "@components/Spinner";
 
-export const CharactersPage = () => {
+const CharactersPage = () => {
   const { characters, loading, onChangeSearch } = useCharactersController();
 
   if (loading || !characters) return <Spinner />;
@@ -20,3 +20,5 @@ export const CharactersPage = () => {
     </div>
   );
 };
+
+export default CharactersPage;
