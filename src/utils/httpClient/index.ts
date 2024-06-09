@@ -46,7 +46,7 @@ export const marvelClient = async <T>(
   try {
     const { ts, hash, ...rest } = await generateRequestHeaders(requestInit);
 
-    const fullUrl = `${API_URL}${url}&ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+    const fullUrl = `${API_URL}${url}ts=${ts}&apikey=${publicKey}&hash=${hash}`;
 
     const response = await fetch(fullUrl, rest as RequestInit);
 
