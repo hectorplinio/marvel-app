@@ -1,5 +1,5 @@
 import { useHttpClient } from "../useHttpClient";
-import { CharacterResponse } from "@pages/Characters/marvelApiResponses";
+import { CharacterResponse } from "@utils/httpClient/marvelApiResponses";
 import { getCharactersProps } from "./useCharacters";
 
 const createQueryParams = ({ filter }: getCharactersProps) => {

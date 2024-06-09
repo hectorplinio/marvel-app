@@ -1,5 +1,5 @@
 import { Card } from "@components/Card";
-import { useCharactersController } from "./controller";
+import { useCharactersController } from "../../hooks/characters/useCharactersController";
 import { SearchBar } from "@components/SearchBar";
 
 export const CharactersPage = () => {
