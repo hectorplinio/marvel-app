@@ -5,5 +5,9 @@
       "src": "next.config.js",
       "use": "@vercel/next"
     }
-  ]
+  ],
+  "env": {
+    "NEXT_PUBLIC_MARVEL_PUBLIC_KEY": "@next_public_marvel_public_key",
+    "MARVEL_PRIVATE_KEY": "@marvel_private_key"
+  }
 }
