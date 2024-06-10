@@ -38,7 +38,7 @@ const CharacterPage = () => {
             </button>
           </div>
         </div>
-        <div className="absolute bottom-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-white transform rotate-45 translate-x-6 translate-y-6"></div>
+        <div className="absolute bottom-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-white transform rotate-45 translate-x-8 translate-y-8"></div>
       </div>
       <div className="mt-8 px-6 pb-16">
         <div className="flex justify-center">
