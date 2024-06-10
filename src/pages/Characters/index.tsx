@@ -9,7 +9,7 @@ const CharactersPage = () => {
   if (loading || !characters) return <Spinner />;
 
   return (
-    <div className="container mx-auto p-6 px-4">
+    <div className="container mx-auto p-6 px-4 pb-16">
       <SearchBar onSearch={onChangeSearch} />
       <p className="mb-4 ml-2 text-sm">{characters?.length} RESULTS</p>
       <div className="flex flex-wrap">
