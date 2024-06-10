@@ -1,6 +1,6 @@
 import crypto from "crypto";
 
-export const API_URL = "http://gateway.marvel.com/v1/public/";
+export const API_URL = "https://gateway.marvel.com/v1/public/";
 
 export type ClientResponse<T> = {
   error: boolean;
