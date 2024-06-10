@@ -27,11 +27,14 @@ export const useCharacters = () => {
       id: character.id.toString(),
       name: character.name,
       description: character.description,
-      avatar_url: `${character.thumbnail.path}.${character.thumbnail.extension}`,
+      avatar_url:
+        character.thumbnail.path.replace("http://", "https://") +
+        "." +
+        character.thumbnail.extension,
       is_favorited: false,
       comics: character.comics.items.map((comic) => ({
         name: comic.name,
-        resource_url: comic.resourceURI,
+        resource_url: comic.resourceURI.replace("http://", "https://"),
       })),
     }));
 
@@ -53,11 +56,14 @@ export const useCharacters = () => {
       id: characterData.id.toString(),
       name: characterData.name,
       description: characterData.description,
-      avatar_url: `${characterData.thumbnail.path}.${characterData.thumbnail.extension}`,
+      avatar_url:
+        characterData.thumbnail.path.replace("http://", "https://") +
+        "." +
+        characterData.thumbnail.extension,
       is_favorited: false,
       comics: characterData.comics.items.map((comic) => ({
         name: comic.name,
-        resource_url: comic.resourceURI,
+        resource_url: comic.resourceURI.replace("http://", "https://"),
       })),
     };
 
@@ -80,7 +86,10 @@ export const useCharacters = () => {
 
       return {
         name: comic.title,
-        resource_url: `${comic.thumbnail.path}.${comic.thumbnail.extension}`,
+        resource_url:
+          comic.thumbnail.path.replace("http://", "https://") +
+          "." +
+          comic.thumbnail.extension,
         year: year,
       };
     });

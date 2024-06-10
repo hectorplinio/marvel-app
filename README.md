@@ -1,36 +1,191 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Marvel App
 
-## Getting Started
+Marvel App is a web application that allows users to browse Marvel characters and their comics. Users can search for characters, view detailed information about each character, and mark characters as favorites.
 
-First, run the development server:
+## Table of Contents
+
+- [Marvel App](#marvel-app)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Running the Application](#running-the-application)
+  - [Architecture](#architecture)
+  - [Folder Structure](#folder-structure)
+  - [Environment Variables](#environment-variables)
+  - [Development](#development)
+    - [Style guide](#style-guide)
+    - [Testing](#testing)
+    - [Running tests](#running-tests)
+  - [After finishing a task](#after-finishing-a-task)
+  - [Dependencies](#dependencies)
+  - [Contributing](#contributing)
+  - [License](#license)
+
+## Installation
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/hectorplinio/marvel-app.git
+cd marvel-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install the dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Keep in mind that we use `npm` for managing Node packages. If you try installing the dependencies with `yarn`, it will generate a `yarn-lock` file that will likely cause problems with the existing `package-lock.json`.
 
-## Learn More
+3. Create a .env.local file in the root directory and add your Marvel API keys. Please note that you must go to this [URL](https://developer.marvel.com/account) and register in order to obtain the different keys.
 
-To learn more about Next.js, take a look at the following resources:
+```makefile
+NEXT_PUBLIC_MARVEL_PUBLIC_KEY=your_marvel_public_key
+MARVEL_PRIVATE_KEY=your_marvel_private_key
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Running the Application
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To run the application in development mode, use the following command:
 
-## Deploy on Vercel
+```
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This will start the application on http://localhost:3000.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To build the application for production, use the following command:
+
+```
+npm run build
+```
+
+And to start the production build:
+
+```
+npm start
+```
+
+## Architecture
+
+The application is built with Next.js, a React framework that provides server-side rendering and static site generation. It uses the Marvel API to fetch character and comic data.
+
+### Key Components
+
+- Next.js: Provides the framework for server-side rendering and routing.
+- React: Used for building the user interface.
+- Tailwind CSS: Used for styling the application.
+
+## Folder Structure
+
+```
+marvel-app/
+├── public/              # Static assets
+├── src/
+│   ├── components/      # React components
+│   ├── contexts/        # Context providers for global state
+│   ├── controllers/     # Hooks for handling data fetching and logic
+│   ├── domain/          # Domain-specific logic
+│   ├── hooks/           # Custom hooks
+│   ├── pages/           # Next.js pages
+│   ├── styles/          # Global styles
+│   └── utils/           # Utility functions
+├── .env.local           # Environment variables
+├── .eslintrc.json       # ESLint configuration
+├── next.config.js       # Next.js configuration
+├── package.json         # Project dependencies and scripts
+└── README.md            # Project documentation
+```
+
+## Environment Variables
+
+The application requires the following environment variables, which should be stored in a .env.local file in the root directory:
+
+- NEXT_PUBLIC_MARVEL_PUBLIC_KEY: Your Marvel API public key.
+- MARVEL_PRIVATE_KEY: Your Marvel API private key.
+
+## Development
+
+### Style guide
+
+Before submitting a patch, please make sure that the code is formatted executing this command:
+
+```
+npm run format
+```
+
+### Testing
+
+Testing is crucial for us and we strive for high coverage of our code.
+
+We encourage you to write tests for every functionality you build and also update the existing ones if they need to.
+
+#### Running tests
+
+Before running the test, install the needed dependencies:
+
+```
+npm install
+```
+
+Execute all tests with:
+
+```
+npm run test
+```
+
+## After finishing a task
+
+Before pushing your changes, make sure you run the linter and prettier to ensure the code follows the rules, or the CI pipeline will throw an error and fail:
+
+```
+npm run lint:fix
+npm run format
+```
+
+## Dependencies
+
+### Production dependencies [Hard]
+
+| Name           | Reason                                                                           |
+| -------------- | -------------------------------------------------------------------------------- |
+| next           | A React framework that enables server-side rendering and static site generation. |
+| react          | A JavaScript library for building user interfaces.                               |
+| react-dom      | DOM-specific methods for React.                                                  |
+| react-icons    | Popular icons as React components.                                               |
+| react-spinners | Loading spinner components for React.                                            |
+
+### Development dependencies [Development]
+
+| Name                             | Reason                                                     |
+| -------------------------------- | ---------------------------------------------------------- |
+| @commitlint/cli                  | Linting tool for commit messages.                          |
+| @commitlint/config-conventional  | Conventional commit guidelines.                            |
+| @testing-library/jest-dom        | Custom Jest matchers for DOM nodes.                        |
+| @testing-library/react           | Utilities for testing React components.                    |
+| @types/\*                        | Types definitions                                          |
+| @typescript-eslint/eslint-plugin | ESLint plugin for TypeScript.                              |
+| autoprefixer                     | PostCSS plugin to parse CSS and add vendor prefixes.       |
+| eslint                           | Linter for identifying problematic patterns in JavaScript. |
+| eslint-config-next               | ESLint configuration for Next.js.                          |
+| eslint-config-prettier           | Turns off ESLint rules that conflict with Prettier.        |
+| eslint-plugin-prettier           | Runs Prettier as an ESLint rule.                           |
+| husky                            | Git hooks for running scripts.                             |
+| jest                             | JavaScript testing framework.                              |
+| jest-environment-jsdom           | Jest environment for testing with JSDOM.                   |
+| lint-staged                      | Runs linters on git staged files.                          |
+| pinst                            | Achieve the desired effect by setting a prepare            |
+| prettier                         | Code formatter                                             |
+| postcss                          | CSS transformation tool.                                   |
+| tailwindcss                      | Utility-first CSS framework.                               |
+| ts-jest                          | Transformer for testing in Typescript                      |
+| ts-node                          | TypeScript execution engine and REPL for Node              |
+| typescript                       | Typescript compiler                                        |
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request if you have any improvements or bug fixes.
+
+## License
+
+This project is licensed under the MIT License.
