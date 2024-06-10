@@ -33,17 +33,17 @@ const CharacterPage = () => {
                   isFavorited ? "/selected_heart.png" : "/unselected_heart.png"
                 }
                 alt="Favorite"
-                className="w-full h-full"
+                className="heart-icon"
               />
             </button>
           </div>
         </div>
-        <div className="absolute bottom-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-white transform rotate-45 translate-x-8 translate-y-8"></div>
+        <div className="absolute bottom-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-white transform rotate-45 translate-x-14 translate-y-8"></div>
       </div>
       <div className="mt-8 px-6 pb-16">
         <div className="flex justify-center">
           <div className="flex flex-col space-y-4 overflow-x-auto pb-4 custom-scrollbar max-w-4xl w-full">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-left md:text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-left">
               COMICS
             </h2>
             <div className="flex space-x-4">
