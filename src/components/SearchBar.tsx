@@ -20,7 +20,7 @@ export const SearchBar = ({ onSearch }: SearchBarProps) => {
 
   return (
     <div className="relative w-full mb-4 ml-2">
-      <FiSearch className="absolute top-3 left-3 text-black-400" />
+      <FiSearch className="absolute top-3 left-2 text-black-400" />
       <input
         type="text"
         value={query}

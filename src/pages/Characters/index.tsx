@@ -12,7 +12,7 @@ const CharactersPage = () => {
     <div className="container mx-auto p-6 px-4 pb-16">
       <SearchBar onSearch={onChangeSearch} />
       <p className="mb-4 ml-2 text-sm">{characters?.length} RESULTS</p>
-      <div className="flex flex-wrap">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4">
         {characters?.map((character) => (
           <Card key={character.id} character={character} />
         ))}

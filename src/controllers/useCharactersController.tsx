@@ -10,7 +10,7 @@ export interface FilterGetCharacters {
 
 export const useCharactersController = () => {
   const [loading, setLoading] = useState(false);
-  const { getCharacters } = useCharacters();
+  const { getCharacters, getCharacter } = useCharacters();
   const [characters, setCharacters] = useState<Array<Character> | null>(null);
   const { favorites, showFavorites } = useFavorites();
 
@@ -33,13 +33,40 @@ export const useCharactersController = () => {
 
     if (!data) return;
 
-    setLoading(false);
+    if (showFavorites) {
+      await fetchFavoriteCharacters(data);
+    } else {
+      setCharacters(data);
+    }
 
-    showFavorites
-      ? setCharacters(
-          data.filter((character) => favorites.includes(character.id)),
-        )
-      : setCharacters(data);
+    setLoading(false);
+  };
+
+  const fetchFavoriteCharacters = async (data: Character[]) => {
+    const favoriteCharacters = data.filter((character) =>
+      favorites.includes(character.id),
+    );
+
+    const missingFavorites = favorites.filter(
+      (favoriteId) => !data.some((character) => character.id === favoriteId),
+    );
+
+    const missingCharactersPromises = missingFavorites.map(
+      async (characterId) => {
+        const response = await getCharacter(characterId);
+        if (!response || !response.data) {
+          return null;
+        }
+        return response.data;
+      },
+    );
+
+    const missingCharacters = (
+      await Promise.all(missingCharactersPromises)
+    ).filter((character): character is Character => character !== null);
+
+    const combinedCharacters = [...favoriteCharacters, ...missingCharacters];
+    setCharacters(combinedCharacters);
   };
 
   useEffect(() => {

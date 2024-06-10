@@ -8,7 +8,7 @@ body {
 }
 
 .card-container {
-  @apply relative overflow-hidden m-2 w-48 bg-white;
+  @apply relative overflow-hidden w-full sm:w-48 bg-white;
 }
 
 .card-image-wrapper {
