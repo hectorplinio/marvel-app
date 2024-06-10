@@ -12,8 +12,8 @@ const CharacterPage = () => {
 
   return (
     <div className="">
-      <div className="flex bg-black text-white items-center justify-center">
-        <div className="flex items-center w-full max-w-5xl">
+      <div className="relative flex bg-black text-white items-center justify-center">
+        <div className="flex items-center w-full max-w-4xl">
           <img
             src={character.avatar_url}
             alt={character.name}
@@ -42,8 +42,9 @@ const CharacterPage = () => {
             </div>
           </div>
         </div>
+        <div className="absolute bottom-0 right-0 w-12 h-16 bg-white transform rotate-45 translate-x-8 translate-y-8"></div>
       </div>
-      <div className="mt-8 px-6">
+      <div className="mt-8 px-6 pb-16">
         <div className="flex justify-center">
           <div className="flex flex-col space-y-4 overflow-x-auto pb-4 custom-scrollbar max-w-4xl">
             <h2 className="text-3xl font-bold mb-4">COMICS</h2>
