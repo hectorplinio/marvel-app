@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Marvel</title>
+        <title>Marvel App</title>
       </Head>
       <CharactersPage />
     </>
