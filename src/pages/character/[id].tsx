@@ -12,7 +12,7 @@ const CharacterPage = () => {
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden">
-      <div className="flex flex-col md:flex-row bg-black text-white items-center justify-center p-4 md:p-6 relative w-full mx-auto">
+      <div className="flex flex-col md:flex-row bg-black text-white items-center justify-center relative w-full mx-auto">
         <div className="flex flex-col md:flex-row items-center w-full max-w-5xl">
           <img
             src={character.avatar_url}
