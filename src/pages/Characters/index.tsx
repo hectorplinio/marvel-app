@@ -7,7 +7,7 @@ const CharactersPage = () => {
   const { characters, loading, searchTerm, showFavorites, onChangeSearch } =
     useCharactersController();
 
-  if (loading || !characters) return <Spinner />;
+  if (loading) return <Spinner />;
 
   return (
     <div className="container mx-auto p-6 px-4 pb-16">

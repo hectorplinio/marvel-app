@@ -6,13 +6,13 @@ const CharacterPage = () => {
   const { character, comics, loading } = useCharacterController();
   const { favorites, toggleFavorite } = useFavorites();
 
-  if (loading || !character || !comics) return <Spinner />;
+  if (loading || !character) return <Spinner />;
 
   const isFavorited = favorites.includes(character?.id);
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden">
-      <div className="flex flex-col md:flex-row bg-black text-white items-center justify-center p-4 md:p-6 relative w-full mx-auto">
+      <div className="flex flex-col md:flex-row bg-black text-white items-center justify-center relative w-full mx-auto">
         <div className="flex flex-col md:flex-row items-center w-full max-w-5xl">
           <img
             src={character.avatar_url}
@@ -52,7 +52,7 @@ const CharacterPage = () => {
             <h2 className="text-2xl md:text-3xl font-bold mb-4 text-left">
               COMICS
             </h2>
-            {comics.length > 0 ? (
+            {comics && comics.length > 0 ? (
               <div className="flex space-x-4">
                 {comics.map((comic) => (
                   <div

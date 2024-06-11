@@ -4,7 +4,7 @@ import { useCharacters } from "@hooks/characters/useCharacters";
 import { useEffect, useState } from "react";
 
 export interface FilterGetCharacters {
-  nameStartsWith?: string;
+  nameStartsWith: string;
   limit: string;
 }
 
@@ -14,7 +14,7 @@ export const useCharactersController = () => {
   const [characters, setCharacters] = useState<Array<Character> | null>(null);
   const { favorites, showFavorites } = useFavorites();
   const [filter, setFilter] = useState<FilterGetCharacters>({
-    nameStartsWith: undefined,
+    nameStartsWith: "",
     limit: "50",
   });
 
@@ -25,9 +25,8 @@ export const useCharactersController = () => {
 
     const { data } = await getCharacters({
       filter: {
-        nameStartsWith: filter.nameStartsWith
-          ? filter.nameStartsWith
-          : undefined,
+        nameStartsWith:
+          filter.nameStartsWith === "" ? undefined : filter.nameStartsWith,
         limit: filter.limit,
       },
     });
@@ -91,7 +90,7 @@ export const useCharactersController = () => {
   return {
     characters,
     loading,
-    searchTerm: filter.nameStartsWith || "",
+    searchTerm: filter.nameStartsWith,
     showFavorites,
     onChangeSearch,
   };

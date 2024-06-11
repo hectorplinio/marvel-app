@@ -28,13 +28,18 @@ export const Card = ({ character }: CardProps) => {
           />
         </Link>
       </div>
-      <div className="card-content-wrapper">
+      <div className="card-content-wrapper flex justify-between items-center">
         <div className="card-background-effect"></div>
-        <Link href={`/character/${character.id}`}>
-          <h3 className="card-text">{name}</h3>
+        <Link
+          href={`/character/${character.id}`}
+          className="flex-1 overflow-hidden"
+        >
+          <h3 className="card-text whitespace-nowrap overflow-hidden text-ellipsis">
+            {name}
+          </h3>
         </Link>
         <button
-          className="card-button"
+          className="card-button ml-2"
           onClick={() => toggleFavorite(character.id)}
         >
           <img
