@@ -1,5 +1,5 @@
 import { Spinner } from "@components/Spinner";
-import { useCharacterController } from "@controllers/useCharacterController";
+import { useCharacterController } from "@hooks/characters/useCharacterController";
 import { useFavorites } from "@contexts/FavoritesContext";
 
 const CharacterPage = () => {
