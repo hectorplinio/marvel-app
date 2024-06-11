@@ -30,7 +30,9 @@ export const Card = ({ character }: CardProps) => {
       </div>
       <div className="card-content-wrapper">
         <div className="card-background-effect"></div>
-        <h3 className="card-text">{name}</h3>
+        <Link href={`/character/${character.id}`}>
+          <h3 className="card-text">{name}</h3>
+        </Link>
         <button
           className="card-button"
           onClick={() => toggleFavorite(character.id)}
