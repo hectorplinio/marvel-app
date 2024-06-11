@@ -6,17 +6,17 @@ export const Header = () => {
   const { favorites, showFavorites, toggleShowFavorites } = useFavorites();
 
   return (
-    <header className="bg-black h-24 flex justify-between items-center md:h-21 md:px-12">
+    <header className="bg-black h-20 p-4 flex justify-between items-center md:h-21 md:px-12">
       <Link
         href="/"
         className="flex items-center"
         onClick={showFavorites ? toggleShowFavorites : () => {}}
       >
-        <div className="relative md:h-8 md:w-32">
+        <div className="relative h-8 w-24 md:h-8 md:w-32">
           <img
             src="/Marvel_logo.png"
             alt="Marvel Logo"
-            className="object-contain -m-2"
+            className="object-contain w-full h-full"
           />
         </div>
       </Link>

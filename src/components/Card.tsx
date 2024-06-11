@@ -38,8 +38,7 @@ export const Card = ({ character }: CardProps) => {
           <img
             src={isFavorited ? "/selected_heart.png" : "/unselected_heart.png"}
             alt="Favorite"
-            width={24}
-            height={24}
+            className="heart-icon"
           />
         </button>
       </div>
