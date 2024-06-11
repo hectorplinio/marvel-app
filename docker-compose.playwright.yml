@@ -15,7 +15,7 @@ services:
     volumes:
       - .:/app
     working_dir: /app
-    command: npx playwright test
+    command: npm run test:playwright
     environment:
       - CI=true
       - BASE_URL=http://web:3000
