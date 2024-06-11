@@ -88,7 +88,6 @@ marvel-app/
 ├── src/
 │   ├── components/      # React components
 │   ├── contexts/        # Context providers for global state
-│   ├── controllers/     # Hooks for handling data fetching and logic
 │   ├── domain/          # Domain-specific logic
 │   ├── hooks/           # Custom hooks
 │   ├── pages/           # Next.js pages
