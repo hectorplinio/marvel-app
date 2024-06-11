@@ -83,6 +83,12 @@ export const useCharactersController = () => {
     fetchCharacters();
   }, [filter.nameStartsWith, showFavorites]);
 
+  useEffect(() => {
+    if (showFavorites) {
+      fetchCharacters();
+    }
+  }, [favorites]);
+
   const onChangeSearch = (value: string) => {
     setFilter({ ...filter, nameStartsWith: value });
   };
