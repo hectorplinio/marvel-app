@@ -2,6 +2,8 @@
 
 Marvel App is a web application that allows users to browse Marvel characters and their comics. Users can search for characters, view detailed information about each character, and mark characters as favorites.
 
+Production URL: [Marvel App](https://marvel-app-five-wheat.vercel.app/)
+
 ## Table of Contents
 
 - [Marvel App](#marvel-app)
@@ -15,6 +17,7 @@ Marvel App is a web application that allows users to browse Marvel characters an
     - [Style guide](#style-guide)
     - [Testing](#testing)
     - [Running tests](#running-tests)
+    - [End-to-End Testing](#end-to-end-testing)
   - [After finishing a task](#after-finishing-a-task)
   - [Dependencies](#dependencies)
   - [Contributing](#contributing)
@@ -81,6 +84,7 @@ The application is built with Next.js, a React framework that provides server-si
 ```
 marvel-app/
 ├── public/              # Static assets
+├── tests/               # 2e2 test folder
 ├── src/
 │   ├── components/      # React components
 │   ├── contexts/        # Context providers for global state
@@ -134,6 +138,24 @@ Execute all tests with:
 npm run test
 ```
 
+#### End-to-End Testing
+
+We use Playwright for end-to-end testing. Playwright tests can be found in the `tests` directory.
+
+To run the Playwright tests, use the following command:
+
+```
+npm run test:playwright
+```
+
+Ensure the application is running before executing the E2E tests. You can start the application with:
+
+```
+npm run dev
+```
+
+Then, in a separate terminal, run the Playwright tests.
+
 ## After finishing a task
 
 Before pushing your changes, make sure you run the linter and prettier to ensure the code follows the rules, or the CI pipeline will throw an error and fail:
@@ -147,13 +169,14 @@ npm run format
 
 ### Production dependencies [Hard]
 
-| Name           | Reason                                                                           |
-| -------------- | -------------------------------------------------------------------------------- |
-| next           | A React framework that enables server-side rendering and static site generation. |
-| react          | A JavaScript library for building user interfaces.                               |
-| react-dom      | DOM-specific methods for React.                                                  |
-| react-icons    | Popular icons as React components.                                               |
-| react-spinners | Loading spinner components for React.                                            |
+| Name            | Reason                                                                           |
+| --------------- | -------------------------------------------------------------------------------- |
+| playwright/test | Library to do the 2e2 tests cases.                                               |
+| next            | A React framework that enables server-side rendering and static site generation. |
+| react           | A JavaScript library for building user interfaces.                               |
+| react-dom       | DOM-specific methods for React.                                                  |
+| react-icons     | Popular icons as React components.                                               |
+| react-spinners  | Loading spinner components for React.                                            |
 
 ### Development dependencies [Development]
 
