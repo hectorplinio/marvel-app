@@ -91,7 +91,8 @@ export const useCharactersController = () => {
   return {
     characters,
     loading,
-    onChangeSearch,
     searchTerm: filter.nameStartsWith || "",
+    showFavorites,
+    onChangeSearch,
   };
 };
