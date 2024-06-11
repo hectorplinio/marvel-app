@@ -6,7 +6,7 @@ const CharacterPage = () => {
   const { character, comics, loading } = useCharacterController();
   const { favorites, toggleFavorite } = useFavorites();
 
-  if (loading || !character || !comics) return <Spinner />;
+  if (loading || !character) return <Spinner />;
 
   const isFavorited = favorites.includes(character?.id);
 
@@ -52,7 +52,7 @@ const CharacterPage = () => {
             <h2 className="text-2xl md:text-3xl font-bold mb-4 text-left">
               COMICS
             </h2>
-            {comics.length > 0 ? (
+            {comics && comics.length > 0 ? (
               <div className="flex space-x-4">
                 {comics.map((comic) => (
                   <div
