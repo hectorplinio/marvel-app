@@ -31,6 +31,7 @@ const customJestConfig = {
     "/build/",
     "src/pages/_app.tsx",
     "/.next/",
+    "./tests",
   ],
   collectCoverage: true,
   modulePaths: ["<rootDir>/src/"],
