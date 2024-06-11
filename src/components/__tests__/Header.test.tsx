@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { Header } from "@components/Header";
-import { FavoritesProvider } from "@contexts/FavoritesContext";
+import { Header } from "../Header";
+import { FavoritesProvider } from "../../contexts/FavoritesContext";
 
 describe("Header", () => {
   it("renders Marvel logo", () => {

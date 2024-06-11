@@ -1,17 +1,17 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { SearchBar } from "@components/SearchBar";
+import { SearchBar } from "../SearchBar";
 
 describe("SearchBar", () => {
   it("renders the search bar", () => {
-    render(<SearchBar onSearch={jest.fn()} />);
+    render(<SearchBar onSearch={jest.fn()} isLoading={false} value="" />);
     const inputElement = screen.getByPlaceholderText(/search a character/i);
     expect(inputElement).toBeInTheDocument();
   });
 
   it("calls onSearch with the correct query after debounce", async () => {
     const mockOnSearch = jest.fn();
-    render(<SearchBar onSearch={mockOnSearch} />);
+    render(<SearchBar onSearch={mockOnSearch} isLoading={false} value="" />);
 
     const inputElement = screen.getByPlaceholderText(/search a character/i);
     fireEvent.change(inputElement, { target: { value: "spider-man" } });
@@ -27,7 +27,7 @@ describe("SearchBar", () => {
   it("debounces the search input correctly", async () => {
     jest.useFakeTimers();
     const mockOnSearch = jest.fn();
-    render(<SearchBar onSearch={mockOnSearch} />);
+    render(<SearchBar onSearch={mockOnSearch} isLoading={false} value="" />);
 
     const inputElement = screen.getByPlaceholderText(/search a character/i);
     fireEvent.change(inputElement, { target: { value: "hulk" } });
@@ -46,7 +46,7 @@ describe("SearchBar", () => {
   it("clears the previous timeout when input changes", async () => {
     jest.useFakeTimers();
     const mockOnSearch = jest.fn();
-    render(<SearchBar onSearch={mockOnSearch} />);
+    render(<SearchBar onSearch={mockOnSearch} isLoading={false} value="" />);
 
     const inputElement = screen.getByPlaceholderText(/search a character/i);
     fireEvent.change(inputElement, { target: { value: "iron" } });

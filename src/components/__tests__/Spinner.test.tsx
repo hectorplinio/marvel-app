@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { Spinner } from "@components/Spinner";
+import { Spinner } from "../Spinner";
 
 describe("Spinner component", () => {
   it("renders without crashing", () => {
