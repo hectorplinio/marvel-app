@@ -1,4 +1,4 @@
-name: CI
+name: Playwright Tests
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  build:
+  playwright:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,5 +19,12 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
+      - name: Install Docker Compose
+        run: sudo apt-get update && sudo apt-get install -y docker-compose
+
       - name: Build and run Docker Compose
         run: docker-compose -f docker-compose.playwright.yml up --abort-on-container-exit --exit-code-from playwright
+
+      - name: Shutdown Docker Compose
+        if: always()
+        run: docker-compose -f docker-compose.playwright.yml down
