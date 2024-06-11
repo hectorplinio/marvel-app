@@ -12,7 +12,7 @@ const CharacterPage = () => {
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden">
-      <div className="flex flex-col md:flex-row bg-black text-white items-center justify-center p-4 md:p-6 relative w-full max-w-screen-xl mx-auto">
+      <div className="flex flex-col md:flex-row bg-black text-white items-center justify-center p-4 md:p-6 relative w-full mx-auto">
         <div className="flex flex-col md:flex-row items-center w-full max-w-5xl">
           <img
             src={character.avatar_url}
@@ -20,25 +20,31 @@ const CharacterPage = () => {
             className="w-full max-w-xs md:max-w-none md:w-64 h-auto object-cover"
           />
           <div className="ml-0 md:ml-12 flex-1 mt-4 md:mt-0 text-center md:text-left relative">
-            <h1 className="text-2xl md:text-4xl font-bold">{character.name}</h1>
+            <div className="flex justify-center md:justify-between items-center">
+              <h1 className="text-2xl md:text-4xl font-bold flex-1 text-center">
+                {character.name}
+              </h1>
+              <button
+                className="focus:outline-none ml-4"
+                onClick={() => toggleFavorite(character.id)}
+              >
+                <img
+                  src={
+                    isFavorited
+                      ? "/selected_heart.png"
+                      : "/unselected_heart.png"
+                  }
+                  alt="Favorite"
+                  className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"
+                />
+              </button>
+            </div>
             <p className="mt-2 md:mt-4 text-base md:text-lg">
               {character.description}
             </p>
-            <button
-              className="focus:outline-none absolute top-0 right-0 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16"
-              onClick={() => toggleFavorite(character.id)}
-            >
-              <img
-                src={
-                  isFavorited ? "/selected_heart.png" : "/unselected_heart.png"
-                }
-                alt="Favorite"
-                className="heart-icon"
-              />
-            </button>
           </div>
         </div>
-        <div className="absolute bottom-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-white transform rotate-45 translate-x-14 translate-y-8"></div>
+        <div className="absolute bottom-0 right-0 w-12 h-12 bg-white transform rotate-45 translate-x-6 translate-y-6 md:w-16 md:h-16 md:translate-x-8 md:translate-y-8"></div>
       </div>
       <div className="mt-8 px-6 pb-16">
         <div className="flex justify-center">
