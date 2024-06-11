@@ -52,24 +52,28 @@ const CharacterPage = () => {
             <h2 className="text-2xl md:text-3xl font-bold mb-4 text-left">
               COMICS
             </h2>
-            <div className="flex space-x-4">
-              {comics.map((comic) => (
-                <div
-                  key={comic.resource_url + comic.name}
-                  className="w-32 md:w-40 flex-shrink-0"
-                >
-                  <img
-                    src={comic.resource_url}
-                    alt={comic.name}
-                    className="comic-image border-b-2 border-red-500 w-full h-auto"
-                  />
-                  <p className="mt-2 text-sm text-center">{comic.name}</p>
-                  <p className="text-xs text-center text-gray-500">
-                    {comic.year}
-                  </p>
-                </div>
-              ))}
-            </div>
+            {comics.length > 0 ? (
+              <div className="flex space-x-4">
+                {comics.map((comic) => (
+                  <div
+                    key={comic.resource_url + comic.name}
+                    className="w-32 md:w-40 flex-shrink-0"
+                  >
+                    <img
+                      src={comic.resource_url}
+                      alt={comic.name}
+                      className="comic-image border-b-2 border-red-500 w-full h-auto"
+                    />
+                    <p className="mt-2 text-sm text-center">{comic.name}</p>
+                    <p className="text-xs text-center text-gray-500">
+                      {comic.year}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-center text-gray-500">Comics not found</p>
+            )}
           </div>
         </div>
       </div>

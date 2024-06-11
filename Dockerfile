@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+RUN npx playwright install --with-deps
+
 RUN npm run build
 
 EXPOSE 3000

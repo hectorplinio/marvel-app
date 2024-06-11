@@ -9,13 +9,10 @@ services:
       - NODE_ENV=production
 
   playwright:
-    image: mcr.microsoft.com/playwright:focal
+    image: web
     depends_on:
       - web
-    volumes:
-      - .:/app
-    working_dir: /app
-    command: npm run test:playwright
+    entrypoint: ["npx", "playwright", "test"]
     environment:
       - CI=true
       - BASE_URL=http://web:3000
