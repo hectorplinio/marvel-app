@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { Card } from "@components/Card";
-import { FavoritesProvider } from "@contexts/FavoritesContext";
+import { FavoritesProvider } from "../../contexts/FavoritesContext";
+import { Card } from "../Card";
 
 describe("Card component", () => {
   const mockCharacter = {

@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
+import { Spinner } from "./Spinner";
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
+  isLoading: boolean;
+  value: string;
 }
 
-export const SearchBar = ({ onSearch }: SearchBarProps) => {
-  const [query, setQuery] = useState("");
+export const SearchBar = ({ onSearch, isLoading, value }: SearchBarProps) => {
+  const [query, setQuery] = useState(value);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -20,6 +23,11 @@ export const SearchBar = ({ onSearch }: SearchBarProps) => {
 
   return (
     <div className="relative w-full mb-4 ml-2">
+      {isLoading && (
+        <div className="absolute right-0 top-0 mt-2 mr-2">
+          <Spinner />
+        </div>
+      )}
       <FiSearch className="absolute top-3 left-2 text-black-400" />
       <input
         type="text"

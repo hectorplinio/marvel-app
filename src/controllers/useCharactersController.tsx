@@ -13,7 +13,6 @@ export const useCharactersController = () => {
   const { getCharacters, getCharacter } = useCharacters();
   const [characters, setCharacters] = useState<Array<Character> | null>(null);
   const { favorites, showFavorites } = useFavorites();
-
   const [filter, setFilter] = useState<FilterGetCharacters>({
     nameStartsWith: undefined,
     limit: "50",
@@ -21,6 +20,8 @@ export const useCharactersController = () => {
 
   const fetchCharacters = async () => {
     if (loading) return;
+
+    setLoading(true);
 
     const { data } = await getCharacters({
       filter: {
@@ -31,7 +32,10 @@ export const useCharactersController = () => {
       },
     });
 
-    if (!data) return;
+    if (!data) {
+      setLoading(false);
+      return;
+    }
 
     if (showFavorites) {
       await fetchFavoriteCharacters(data);
@@ -66,12 +70,19 @@ export const useCharactersController = () => {
     ).filter((character): character is Character => character !== null);
 
     const combinedCharacters = [...favoriteCharacters, ...missingCharacters];
-    setCharacters(combinedCharacters);
+
+    const filteredFavorites = combinedCharacters.filter((character) =>
+      character.name
+        .toLowerCase()
+        .includes(filter.nameStartsWith?.toLowerCase() || ""),
+    );
+
+    setCharacters(filteredFavorites);
   };
 
   useEffect(() => {
     fetchCharacters();
-  }, [filter.nameStartsWith, favorites, showFavorites]);
+  }, [filter.nameStartsWith, showFavorites]);
 
   const onChangeSearch = (value: string) => {
     setFilter({ ...filter, nameStartsWith: value });
@@ -81,5 +92,6 @@ export const useCharactersController = () => {
     characters,
     loading,
     onChangeSearch,
+    searchTerm: filter.nameStartsWith || "",
   };
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { Layout } from "@components/Layout";
-import { FavoritesProvider } from "@contexts/FavoritesContext";
+import { FavoritesProvider } from "../../contexts/FavoritesContext";
+import { Layout } from "../Layout";
 
 describe("Layout", () => {
   it("renders Header", () => {
